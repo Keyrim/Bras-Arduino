@@ -5,11 +5,45 @@
 #define number_of_motor 4
 
 //EVery stepper has his own ratio
-float step_to_degrees[4] = {0.06, 0.166667, 1, 1 };
-//This value is in stepp, not in degrees
-int order[4] = {0,0, 0, 0};
+float degrees_to_step[4] = {0.06, 17.77777774, 1, 1 };
+//Those values are in stepps, not in degrees
+int order[4] = {0, 0, 0, 0};
+int actual_position [4]= {0, 0, 0, 0};
+//the speed is the equivalent of 
+float motor_speed[4]={0, 0, 0, 0};
+unsigned long previous_motor_timer[4] = {0, 0, 0, 0};
+
+//Full str message from the pc
+String data ;
+long data_number ;
+unsigned int data_indice ;
 
 
+
+int sign(float value)
+{
+    if(value > 0)return 1;
+    else return 0;
+}
+
+bool read_serial()
+{
+    char msg = Serial.read();
+    if(msg == '\n')
+    {
+        data_number = data.toInt();
+        data_indice = data_number & 15 ;
+        data_number = (data_number-data_indice)>>4 ;
+        Serial.println(data_number);
+        data = "";
+        return true;
+    }
+    else 
+    {
+        data += msg ;
+        return false ;
+    }
+}
 
 void setup()
 {
@@ -17,14 +51,40 @@ void setup()
     for(int i = 0; i<2*number_of_motor; i++)pinMode(first_pin+i, OUTPUT);
 
     digitalWrite(25, HIGH);
+    Serial.begin(9600);
     
 }
 
 void loop()
 {
+
+    //Check for some data to read 
+    if(Serial.available())
+    {
+        if(read_serial())
+        {
+            //Data are available to be processed
+            if(data_indice==3)order[1]=data_number;        }
+    }
     
     
-    //Here is where we ask the motor to moove
-    
-    for()
+    //Here is where we ask the motor to moove    
+    for(int m = 0; m < number_of_motor; m++)
+    {
+        float error = order[m] - actual_position[m];
+        if(error)
+        {
+            if(micros()>previous_motor_timer[m]+700)
+            //Here we moove
+            {
+                digitalWrite(first_pin+1+2*m, sign(error));
+                digitalWrite(first_pin+2*m, HIGH);
+                digitalWrite(first_pin+2*m, LOW);
+                previous_motor_timer[m] = micros();
+                if(sign(error))actual_position[m] +=1 ;
+                else actual_position[m]-=1;
+
+            }
+        }
+    }
 }
