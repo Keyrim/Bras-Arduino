@@ -4,6 +4,12 @@
 #define first_pin 22
 #define number_of_motor 4
 
+//EVery stepper has his own ratio
+float step_to_degrees[4] = {0.06, 0.166667, 1, 1 };
+//This value is in stepp, not in degrees
+int order[4] = {0,0, 0, 0};
+
+
 
 void setup()
 {
@@ -16,7 +22,9 @@ void setup()
 
 void loop()
 {
-    digitalWrite(24, HIGH);
-    digitalWrite(24, LOW);
-    delayMicroseconds(1000);
+    
+    
+    //Here is where we ask the motor to moove
+    
+    for()
 }
