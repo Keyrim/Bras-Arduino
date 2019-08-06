@@ -4,13 +4,11 @@
 #define first_pin 22
 #define number_of_motor 4
 
-//EVery stepper has his own ratio
-float degrees_to_step[4] = {0.06, 17.77777774, 1, 1 };
 //Those values are in stepps, not in degrees
-int order[4] = {0, 0, 0, 0};
-int actual_position [4]= {0, 0, 0, 0};
+int order[4] = {0, 1600, 1600, 1600};
+int actual_position [4]= {3333, 1600, 1600, 1600};
 //the speed is the equivalent of 
-float motor_speed[4]={0, 0, 0, 0};
+long motor_period[4]={500, 1000, 1000, 1000};
 unsigned long previous_motor_timer[4] = {0, 0, 0, 0};
 
 //Full str message from the pc
@@ -64,7 +62,9 @@ void loop()
         if(read_serial())
         {
             //Data are available to be processed
-            if(data_indice==3)order[1]=data_number;        }
+            if(data_indice<4)order[data_indice]=data_number;        
+            else if(data_indice<8)motor_period[data_indice-4]=data_number;
+        }
     }
     
     
@@ -74,7 +74,7 @@ void loop()
         float error = order[m] - actual_position[m];
         if(error)
         {
-            if(micros()>previous_motor_timer[m]+700)
+            if(micros()>previous_motor_timer[m]+motor_period[m])
             //Here we moove
             {
                 digitalWrite(first_pin+1+2*m, sign(error));

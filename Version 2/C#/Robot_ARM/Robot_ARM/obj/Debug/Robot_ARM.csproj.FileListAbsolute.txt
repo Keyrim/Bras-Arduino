@@ -1,0 +1,10 @@
+C:\Users\Theo\Documents\Git Hub\Bras-Arduino\Version 2\C#\Robot_ARM\Robot_ARM\bin\Debug\Robot_ARM.exe.config
+C:\Users\Theo\Documents\Git Hub\Bras-Arduino\Version 2\C#\Robot_ARM\Robot_ARM\bin\Debug\Robot_ARM.exe
+C:\Users\Theo\Documents\Git Hub\Bras-Arduino\Version 2\C#\Robot_ARM\Robot_ARM\bin\Debug\Robot_ARM.pdb
+C:\Users\Theo\Documents\Git Hub\Bras-Arduino\Version 2\C#\Robot_ARM\Robot_ARM\obj\Debug\Robot_ARM.csprojAssemblyReference.cache
+C:\Users\Theo\Documents\Git Hub\Bras-Arduino\Version 2\C#\Robot_ARM\Robot_ARM\obj\Debug\Robot_ARM.Form1.resources
+C:\Users\Theo\Documents\Git Hub\Bras-Arduino\Version 2\C#\Robot_ARM\Robot_ARM\obj\Debug\Robot_ARM.Properties.Resources.resources
+C:\Users\Theo\Documents\Git Hub\Bras-Arduino\Version 2\C#\Robot_ARM\Robot_ARM\obj\Debug\Robot_ARM.csproj.GenerateResource.cache
+C:\Users\Theo\Documents\Git Hub\Bras-Arduino\Version 2\C#\Robot_ARM\Robot_ARM\obj\Debug\Robot_ARM.csproj.CoreCompileInputs.cache
+C:\Users\Theo\Documents\Git Hub\Bras-Arduino\Version 2\C#\Robot_ARM\Robot_ARM\obj\Debug\Robot_ARM.exe
+C:\Users\Theo\Documents\Git Hub\Bras-Arduino\Version 2\C#\Robot_ARM\Robot_ARM\obj\Debug\Robot_ARM.pdb
