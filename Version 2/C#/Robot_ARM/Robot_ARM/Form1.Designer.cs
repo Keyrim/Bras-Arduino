@@ -35,7 +35,7 @@
             // 
             // arduino_mega
             // 
-            this.arduino_mega.PortName = "COM6";
+            this.arduino_mega.PortName = "COM7";
             // 
             // button_open_port
             // 
