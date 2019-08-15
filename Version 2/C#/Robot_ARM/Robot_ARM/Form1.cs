@@ -53,7 +53,7 @@ namespace Robot_ARM
             }
             degrees_to_steps[0] = 9.259259f;
             degrees_to_steps[1] = 17.7777f;
-            degrees_to_steps[2] = 1f;
+            degrees_to_steps[2] = 17.7777f;
             degrees_to_steps[3] = 1f;
 
 
