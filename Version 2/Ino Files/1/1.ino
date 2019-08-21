@@ -5,8 +5,8 @@
 #define number_of_motor 4
 
 //Those values are in stepps, not in degrees
-int order[4] = {0, 1600, 1600, 1600};
-int actual_position [4]= {3333, 1600, 1600, 1600};
+int order[4] = {1600, 1600, 1600, 1600};
+int actual_position [4]= {1600, 1600, 1600, 1600};
 //the speed is the equivalent of 
 long motor_period[4]={500, 1000, 1000, 1000};
 unsigned long previous_motor_timer[4] = {0, 0, 0, 0};
