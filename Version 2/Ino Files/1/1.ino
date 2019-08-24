@@ -11,11 +11,20 @@ int actual_position [4]= {1600, 1600, 1600, 1600};
 long motor_period[4]={500, 1000, 1000, 1000};
 unsigned long previous_motor_timer[4] = {0, 0, 0, 0};
 
+unsigned long start_time [number_of_motor] = {0, 0, 0, 0};
+unsigned long motion_duration [number_of_motor] ;
+float acc [number_of_motor] = {10.0, 10.0, 10.0, 10.0};
+int p3 [number_of_motor];
+int p1 [4];
+int p2 [4];
+int p0 [4];
+unsigned long acceleration_time [number_of_motor] ;
+
+
 //Full str message from the pc
 String data ;
 long data_number ;
 unsigned int data_indice ;
-
 
 
 int sign(float value)
@@ -47,8 +56,6 @@ void setup()
 {
     //Initialize our output pin for our motors
     for(int i = 0; i<2*number_of_motor; i++)pinMode(first_pin+i, OUTPUT);
-
-    digitalWrite(25, HIGH);
     Serial.begin(9600);
     
 }
@@ -62,29 +69,56 @@ void loop()
         if(read_serial())
         {
             //Data are available to be processed
-            if(data_indice<4)order[data_indice]=data_number;        
+            if(data_indice<4)
+            {
+                order[data_indice]=data_number;  
+
+                //Initialisation 
+
+
+            }      
             else if(data_indice<8)motor_period[data_indice-4]=data_number;
+
         }
     }
-    
+    //Here is we compute the speed 
+
+
     
     //Here is where we ask the motor to moove    
     for(int m = 0; m < number_of_motor; m++)
     {
-        float error = order[m] - actual_position[m];
-        if(error)
+        if (start_time[m] != 0 ) {
+            //on repere la phase du mvt en fonction de la position actuelle
+            if (micros() < )
+
+            //on calcule la vitesse actuelle en fonction de la position actuelle
+
+
+            //
+        }
+
+    /*
+    //Here is where we ask the motor to moove    
+    for(int m = 0; m < number_of_motor; m++)
+    {
+        int error = order[m] - actual_position[m];
+        if(error != 0 )
         {
             if(micros()>previous_motor_timer[m]+motor_period[m])
             //Here we moove
             {
                 digitalWrite(first_pin+1+2*m, sign(error));
+
                 digitalWrite(first_pin+2*m, HIGH);
                 digitalWrite(first_pin+2*m, LOW);
+
                 previous_motor_timer[m] = micros();
+
                 if(sign(error))actual_position[m] +=1 ;
                 else actual_position[m]-=1;
 
             }
         }
-    }
+    }*/
 }
